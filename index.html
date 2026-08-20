@@ -7,55 +7,11 @@
 <meta name="description" content="Professional pinstriping and custom artwork. Coming soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root{
-    --black:#0c0c0c;
-    --black-2:#151513;
-    --cream:#f2e9d8;
-    --red:#c81e2c;
-    --gold:#c9a24b;
-    --chrome:#9a9c9e;
-    --chrome-dim:#5a5c5e;
-  }
+  /* ---------- home-page-only styles ---------- */
 
-  *{ margin:0; padding:0; box-sizing:border-box; }
-
-  html{ scroll-behavior:smooth; }
-
-  body{
-    background:var(--black);
-    color:var(--cream);
-    font-family:'Inter', sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
-  }
-
-  /* subtle brushed-metal / garage floor texture */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-      repeating-linear-gradient(115deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
-      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,30,44,0.10), transparent 60%),
-      radial-gradient(ellipse 100% 60% at 20% 100%, rgba(201,162,75,0.08), transparent 55%);
-    pointer-events:none;
-    z-index:0;
-  }
-
-  .stage{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:6vh 6vw;
-    z-index:1;
-  }
-
-  /* ---------- pinstripe SVG signature ---------- */
+  /* pinstripe SVG signature */
   .stripe-wrap{
     position:absolute;
     inset:0;
@@ -64,10 +20,7 @@
     z-index:0;
     pointer-events:none;
   }
-  .stripe-wrap svg{
-    width:100%;
-    height:100%;
-  }
+  .stripe-wrap svg{ width:100%; height:100%; }
   .stripe-path{
     fill:none;
     stroke:var(--gold);
@@ -85,11 +38,9 @@
     filter:drop-shadow(0 0 4px rgba(200,30,44,0.35));
     animation:draw 3.6s cubic-bezier(.65,0,.35,1) 0.55s forwards;
   }
-  @keyframes draw{
-    to{ stroke-dashoffset:0; }
-  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
 
-  /* ---------- featured artwork ---------- */
+  /* featured artwork */
   .art-frame{
     position:relative;
     z-index:2;
@@ -105,11 +56,8 @@
     display:block;
     filter:drop-shadow(0 18px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 26px rgba(201,162,75,0.14));
   }
-  @keyframes artIn{
-    to{ opacity:1; transform:translateY(0); }
-  }
+  @keyframes artIn{ to{ opacity:1; transform:translateY(0); } }
 
-  /* ---------- content ---------- */
   .content{
     position:relative;
     z-index:2;
@@ -117,74 +65,11 @@
     max-width:780px;
   }
 
-  .eyebrow{
-    font-family:'Oswald', sans-serif;
-    font-weight:500;
-    letter-spacing:0.42em;
-    font-size:0.68rem;
-    text-transform:uppercase;
-    color:var(--chrome);
-    opacity:0;
-    animation:riseIn 0.8s ease-out 2.6s forwards;
-  }
-
-  .eyebrow::before, .eyebrow::after{
-    content:"—";
-    color:var(--red);
-    margin:0 0.8em;
-  }
-
-  h1{
-    font-family:'Oswald', sans-serif;
-    font-weight:700;
-    letter-spacing:0.06em;
-    font-size:clamp(3rem, 9vw, 6.4rem);
-    line-height:0.92;
-    text-transform:uppercase;
-    color:var(--cream);
-    margin:0.5em 0 0.15em;
-    opacity:0;
-    animation:riseIn 0.9s ease-out 2.75s forwards;
-  }
-
-  h1 span{
-    display:block;
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:600;
-    text-transform:none;
-    letter-spacing:0;
-    font-size:0.42em;
-    color:var(--red);
-    margin-top:0.28em;
-  }
-
-  .tagline{
-    font-family:'Inter', sans-serif;
-    font-weight:300;
-    font-size:clamp(1rem, 2vw, 1.25rem);
-    letter-spacing:0.02em;
-    color:var(--chrome);
-    margin:1.4em auto 0;
-    max-width:32em;
-    line-height:1.6;
-    opacity:0;
-    animation:riseIn 0.9s ease-out 2.95s forwards;
-  }
-
-  .tagline strong{
-    color:var(--cream);
-    font-weight:500;
-  }
-
-  .divider{
-    width:64px;
-    height:2px;
-    background:linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin:2.4em auto;
-    opacity:0;
-    animation:riseIn 0.9s ease-out 3.1s forwards;
-  }
+  h1{ font-size:clamp(3rem, 9vw, 6.4rem); animation-delay:2.75s; }
+  h1 span{ font-size:0.42em; }
+  .eyebrow{ animation-delay:2.6s; }
+  .tagline{ animation-delay:2.95s; max-width:32em; }
+  .divider{ animation-delay:3.1s; }
 
   .status{
     display:inline-flex;
@@ -202,7 +87,6 @@
     opacity:0;
     animation:riseIn 0.9s ease-out 3.25s forwards;
   }
-
   .status .dot{
     width:7px;
     height:7px;
@@ -211,65 +95,50 @@
     box-shadow:0 0 8px var(--red);
     animation:pulse 1.8s ease-in-out infinite;
   }
-
   @keyframes pulse{
     0%,100%{ opacity:1; transform:scale(1); }
     50%{ opacity:0.4; transform:scale(0.8); }
-  }
-
-  @keyframes riseIn{
-    from{ opacity:0; transform:translateY(14px); }
-    to{ opacity:1; transform:translateY(0); }
   }
 
   footer{
     position:absolute;
     bottom:2.4em;
     left:0; right:0;
-    text-align:center;
-    z-index:2;
-    font-family:'Inter', sans-serif;
-    font-size:0.7rem;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:var(--chrome-dim);
     opacity:0;
     animation:riseIn 0.9s ease-out 3.5s forwards;
   }
 
-  footer a{
-    color:var(--chrome);
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-    transition:border-color 0.2s, color 0.2s;
-  }
-  footer a:hover{
-    color:var(--gold);
-    border-color:var(--gold);
-  }
-
   @media (prefers-reduced-motion: reduce){
-    .stripe-path, .silhouette, .eyebrow, h1, .tagline, .divider, .status, footer{
+    .stripe-path, .art-frame, .status, footer{
       animation:none !important;
       opacity:1 !important;
       stroke-dashoffset:0 !important;
+      transform:none !important;
     }
-    .silhouette{ opacity:0.16 !important; }
     .status .dot{ animation:none; }
   }
 
   @media (max-width:600px){
-    .car-sil{ width:44vw; bottom:3%; }
-    .moto-sil{ width:34vw; top:4%; }
     .status{ font-size:0.68rem; padding:0.8em 1.3em; letter-spacing:0.14em; }
   }
 </style>
 </head>
 <body>
 
+<nav class="nav" id="siteNav">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+    <span class="bars"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+  <div class="nav-menu" id="navMenu" role="menu">
+    <a href="index.html" role="menuitem">Home</a>
+    <a href="portfolio.html" role="menuitem">Portfolio</a>
+    <a href="about.html" role="menuitem">About the Artist</a>
+  </div>
+</nav>
+
 <div class="stage">
 
-  <!-- Pinstripe brush-stroke signature, drawn across the whole viewport -->
   <div class="stripe-wrap" aria-hidden="true">
     <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
       <path class="stripe-path"
@@ -307,6 +176,8 @@
   </footer>
 
 </div>
+
+<script src="nav.js"></script>
 
 </body>
 </html>

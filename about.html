@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About the Artist — Danalog</title>
+<meta name="description" content="About the artist behind Danalog custom pinstriping and artwork.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .stage{
+    justify-content:center;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .about-layout{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:3.5em;
+    align-items:start;
+    width:100%;
+  }
+  .portrait-frame{
+    aspect-ratio:4/5;
+    border:1px solid rgba(201,162,75,0.3);
+    border-radius:2px;
+    background:linear-gradient(145deg, var(--black-2), var(--black));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:0.9em;
+    color:var(--chrome-dim);
+    opacity:0;
+    transform:translateY(16px);
+    animation:riseIn 0.8s ease-out 0.2s forwards;
+  }
+  .portrait-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .portrait-frame svg{ width:44px; height:44px; opacity:0.45; }
+  .portrait-frame span{
+    font-family:'Oswald', sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:0 1.5em;
+  }
+
+  .about-text{ text-align:left; }
+  .about-text .eyebrow{ text-align:left; }
+  .about-text .eyebrow::before{ display:none; }
+  .about-text h1{ text-align:left; font-size:clamp(2.2rem, 5vw, 3.4rem); }
+  .about-text h1 span{ font-size:0.4em; }
+
+  .about-text p.bio{
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    font-size:1.05rem;
+    line-height:1.85;
+    color:var(--chrome);
+    margin-top:1.4em;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 0.5s forwards;
+  }
+  .about-text p.bio strong{ color:var(--cream); font-weight:500; }
+  .about-text p.bio + p.bio{ margin-top:1.1em; }
+
+  .skills{
+    margin-top:2.2em;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7em;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 0.7s forwards;
+  }
+  .skills span{
+    font-family:'Oswald', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(201,162,75,0.3);
+    padding:0.55em 1em;
+    border-radius:2px;
+  }
+
+  .about-text .divider{ margin-left:0; }
+
+  footer{ margin-top:5em; padding-bottom:2em; text-align:center; }
+
+  @media (max-width:760px){
+    .about-layout{ grid-template-columns:1fr; }
+    .portrait-frame{ max-width:260px; margin:0 auto; }
+    .about-text{ text-align:center; }
+    .about-text .eyebrow{ text-align:center; }
+    .about-text h1{ text-align:center; }
+    .skills{ justify-content:center; }
+    .about-text .divider{ margin:2.2em auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .portrait-frame, p.bio, .skills{
+      animation:none !important;
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+    <span class="bars"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+  <div class="nav-menu" id="navMenu" role="menu">
+    <a href="index.html" role="menuitem">Home</a>
+    <a href="portfolio.html" role="menuitem">Portfolio</a>
+    <a href="about.html" role="menuitem">About the Artist</a>
+  </div>
+</nav>
+
+<div class="stage">
+  <div class="about-layout">
+
+    <!--
+      HOW TO ADD A PHOTO OF YOURSELF:
+      Replace the placeholder contents of .portrait-frame below with:
+      <img src="artist-photo.jpg" alt="Photo of the artist">
+    -->
+    <div class="portrait-frame">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      <span>Photo Coming Soon</span>
+    </div>
+
+    <div class="about-text">
+      <p class="eyebrow">About the Artist</p>
+      <h1>Behind the Brush<span>Danalog</span></h1>
+      <p class="bio">
+        <strong>Bio coming soon.</strong> This is where the story goes — how the craft
+        started, what draws the eye to a clean line laid by hand, and what
+        drives the work now. A few sentences on background, influences, and
+        the kind of projects that get taken on.
+      </p>
+      <p class="bio">
+        Add a second paragraph here for specialties — pinstriping, custom panel
+        art, motorcycle and car detailing — or a note on how commissions
+        typically work.
+      </p>
+      <div class="skills">
+        <span>Pinstriping</span>
+        <span>Custom Panel Art</span>
+        <span>Motorcycles</span>
+        <span>Classic Cars</span>
+      </div>
+      <div class="divider"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    Danalog Custom Art &amp; Pinstriping
+  </footer>
+</div>
+
+<script src="nav.js"></script>
+
+</body>
+</html>

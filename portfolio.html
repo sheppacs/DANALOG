@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Danalog</title>
+<meta name="description" content="A gallery of custom pinstriping and artwork by Danalog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .stage{
+    justify-content:flex-start;
+    padding-top:14vh;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .content{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto;
+  }
+  h1{ font-size:clamp(2.4rem, 6vw, 4rem); }
+  h1 span{ font-size:0.4em; }
+
+  .gallery{
+    position:relative;
+    z-index:1;
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:1.6em;
+    margin-top:3.5em;
+  }
+
+  .tile{
+    position:relative;
+    aspect-ratio:4/5;
+    border:1px solid rgba(201,162,75,0.25);
+    border-radius:2px;
+    overflow:hidden;
+    background:
+      linear-gradient(145deg, var(--black-2), var(--black));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transform:translateY(16px);
+    animation:riseIn 0.7s ease-out forwards;
+  }
+  .tile:nth-child(1){ animation-delay:0.15s; }
+  .tile:nth-child(2){ animation-delay:0.25s; }
+  .tile:nth-child(3){ animation-delay:0.35s; }
+  .tile:nth-child(4){ animation-delay:0.45s; }
+  .tile:nth-child(5){ animation-delay:0.55s; }
+  .tile:nth-child(6){ animation-delay:0.65s; }
+
+  .tile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .tile.placeholder{
+    flex-direction:column;
+    gap:0.8em;
+    color:var(--chrome-dim);
+  }
+  .tile.placeholder svg{
+    width:34px;
+    height:34px;
+    opacity:0.5;
+  }
+  .tile.placeholder span{
+    font-family:'Oswald', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+  }
+
+  .tile-caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:0.9em 1em;
+    background:linear-gradient(0deg, rgba(0,0,0,0.75), transparent);
+    font-family:'Oswald', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cream);
+    opacity:0;
+    transition:opacity 0.2s;
+  }
+  .tile:hover .tile-caption{ opacity:1; }
+
+  footer{ margin-top:5em; padding-bottom:2em; }
+
+  @media (prefers-reduced-motion: reduce){
+    .tile{ animation:none !important; opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+    <span class="bars"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+  <div class="nav-menu" id="navMenu" role="menu">
+    <a href="index.html" role="menuitem">Home</a>
+    <a href="portfolio.html" role="menuitem">Portfolio</a>
+    <a href="about.html" role="menuitem">About the Artist</a>
+  </div>
+</nav>
+
+<div class="stage">
+
+  <div class="content">
+    <p class="eyebrow">Danalog</p>
+    <h1>Portfolio<span>A gallery of work in progress</span></h1>
+    <p class="tagline">
+      Custom pinstriping, panel art, and one-off designs. New pieces are added
+      here as they're finished — check back soon for the full gallery.
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="gallery">
+    <!--
+      HOW TO ADD A PHOTO:
+      Replace a placeholder .tile block below with:
+
+      <div class="tile">
+        <img src="portfolio/your-photo.jpg" alt="Description of the piece">
+        <div class="tile-caption">Piece Title</div>
+      </div>
+
+      Upload your photo files into a folder named "portfolio" alongside this page.
+    -->
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+    <div class="tile placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Coming Soon</span>
+    </div>
+  </div>
+
+  <footer>
+    Danalog Custom Art &amp; Pinstriping
+  </footer>
+
+</div>
+
+<script src="nav.js"></script>
+
+</body>
+</html>
