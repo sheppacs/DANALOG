@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danalog — Custom Art & Pinstriping</title>
+<meta name="description" content="Professional pinstriping and custom artwork. Coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0c0c0c;
+    --black-2:#151513;
+    --cream:#f2e9d8;
+    --red:#c81e2c;
+    --gold:#c9a24b;
+    --chrome:#9a9c9e;
+    --chrome-dim:#5a5c5e;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* subtle brushed-metal / garage floor texture */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,30,44,0.10), transparent 60%),
+      radial-gradient(ellipse 100% 60% at 20% 100%, rgba(201,162,75,0.08), transparent 55%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .stage{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:6vh 6vw;
+    z-index:1;
+  }
+
+  /* ---------- pinstripe SVG signature ---------- */
+  .stripe-wrap{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+  }
+  .stripe-wrap svg{
+    width:100%;
+    height:100%;
+  }
+  .stripe-path{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:2.4;
+    stroke-linecap:round;
+    filter:drop-shadow(0 0 6px rgba(201,162,75,0.35));
+    stroke-dasharray:2600;
+    stroke-dashoffset:2600;
+    animation:draw 3.6s cubic-bezier(.65,0,.35,1) 0.3s forwards;
+  }
+  .stripe-path.red{
+    stroke:var(--red);
+    stroke-width:1.6;
+    opacity:0.85;
+    filter:drop-shadow(0 0 4px rgba(200,30,44,0.35));
+    animation:draw 3.6s cubic-bezier(.65,0,.35,1) 0.55s forwards;
+  }
+  @keyframes draw{
+    to{ stroke-dashoffset:0; }
+  }
+
+  /* ---------- featured artwork ---------- */
+  .art-frame{
+    position:relative;
+    z-index:2;
+    width:min(78vw, 300px);
+    margin:0 auto 1.8em;
+    opacity:0;
+    transform:translateY(18px);
+    animation:artIn 1.1s ease-out 0.2s forwards;
+  }
+  .art-frame img{
+    width:100%;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 18px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 26px rgba(201,162,75,0.14));
+  }
+  @keyframes artIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- content ---------- */
+  .content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    max-width:780px;
+  }
+
+  .eyebrow{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    letter-spacing:0.42em;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    color:var(--chrome);
+    opacity:0;
+    animation:riseIn 0.8s ease-out 2.6s forwards;
+  }
+
+  .eyebrow::before, .eyebrow::after{
+    content:"—";
+    color:var(--red);
+    margin:0 0.8em;
+  }
+
+  h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    letter-spacing:0.06em;
+    font-size:clamp(3rem, 9vw, 6.4rem);
+    line-height:0.92;
+    text-transform:uppercase;
+    color:var(--cream);
+    margin:0.5em 0 0.15em;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 2.75s forwards;
+  }
+
+  h1 span{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:0;
+    font-size:0.42em;
+    color:var(--red);
+    margin-top:0.28em;
+  }
+
+  .tagline{
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    font-size:clamp(1rem, 2vw, 1.25rem);
+    letter-spacing:0.02em;
+    color:var(--chrome);
+    margin:1.4em auto 0;
+    max-width:32em;
+    line-height:1.6;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 2.95s forwards;
+  }
+
+  .tagline strong{
+    color:var(--cream);
+    font-weight:500;
+  }
+
+  .divider{
+    width:64px;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin:2.4em auto;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 3.1s forwards;
+  }
+
+  .status{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6em;
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    letter-spacing:0.2em;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(201,162,75,0.35);
+    padding:0.9em 1.8em;
+    border-radius:2px;
+    opacity:0;
+    animation:riseIn 0.9s ease-out 3.25s forwards;
+  }
+
+  .status .dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--red);
+    box-shadow:0 0 8px var(--red);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.4; transform:scale(0.8); }
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  footer{
+    position:absolute;
+    bottom:2.4em;
+    left:0; right:0;
+    text-align:center;
+    z-index:2;
+    font-family:'Inter', sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--chrome-dim);
+    opacity:0;
+    animation:riseIn 0.9s ease-out 3.5s forwards;
+  }
+
+  footer a{
+    color:var(--chrome);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  footer a:hover{
+    color:var(--gold);
+    border-color:var(--gold);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stripe-path, .silhouette, .eyebrow, h1, .tagline, .divider, .status, footer{
+      animation:none !important;
+      opacity:1 !important;
+      stroke-dashoffset:0 !important;
+    }
+    .silhouette{ opacity:0.16 !important; }
+    .status .dot{ animation:none; }
+  }
+
+  @media (max-width:600px){
+    .car-sil{ width:44vw; bottom:3%; }
+    .moto-sil{ width:34vw; top:4%; }
+    .status{ font-size:0.68rem; padding:0.8em 1.3em; letter-spacing:0.14em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- Pinstripe brush-stroke signature, drawn across the whole viewport -->
+  <div class="stripe-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <path class="stripe-path"
+        d="M -50,620
+           C 150,520 280,700 420,600
+           S 700,420 860,480
+           S 1120,650 1280,540
+           C 1400,460 1480,500 1650,420" />
+      <path class="stripe-path red"
+        d="M -50,660
+           C 160,580 300,730 440,650
+           S 710,470 870,530
+           S 1130,690 1290,590
+           C 1410,510 1490,545 1650,470" />
+    </svg>
+  </div>
+
+  <div class="content">
+    <div class="art-frame">
+      <img src="artwork.png" alt="Custom hand-detailed hexagon panel artwork featuring wasps over a honeycomb pattern, by Danalog" />
+    </div>
+    <p class="eyebrow">Danalog</p>
+    <h1>Coming Soon<span>Where the paint tells a story</span></h1>
+    <p class="tagline">
+      <strong>Professional pinstriping and custom artwork</strong> — hand-laid lines,
+      one-off designs, and finishes built for cars, motorcycles, and anything else
+      that deserves a signature touch.
+    </p>
+    <div class="divider"></div>
+    <div class="status"><span class="dot"></span>Site under construction</div>
+  </div>
+
+  <footer>
+    Danalog Custom Art &amp; Pinstriping
+  </footer>
+
+</div>
+
+</body>
+</html>
